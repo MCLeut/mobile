@@ -1,0 +1,5 @@
+com/gamecodeschool/helloworld/BuildConfig.java
+ com.gamecodeschool.helloworld.BuildConfig
+com/gamecodeschool/helloworld/HelloWorldActivity.java
+ com.gamecodeschool.helloworld.HelloWorldActivity
+ com.gamecodeschool.helloworld.HelloWorldActivity$1

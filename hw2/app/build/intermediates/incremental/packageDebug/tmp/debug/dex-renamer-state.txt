@@ -1,0 +1,4 @@
+#Sat Apr 24 14:23:54 CEST 2021
+base.0=C\:\\Users\\cleuthardt\\OneDrive\\PFH\\Entwicklung mobiler Systeme\\mobile\\hw2\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
