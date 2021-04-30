@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*" >
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_span="4"
+            android:editable="false"
+            android:gravity="right"
+            android:hint="Geben Sie bitte Ihre Rechnung ein:" />
+    </TableRow>
+
+    <View
+        android:layout_height="2px"
+        android:background="#00ff00" />
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/button1"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/button3"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:text="+" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/button4"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/button5"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/button6"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/buttonSub"
+            android:text="-" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/button7"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/button8"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/button9"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/buttonMul"
+            android:text="*" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_span="2"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/buttonClear"
+            android:text="Clr" />
+
+        <Button
+            android:id="@+id/buttonDiv"
+            android:text="/" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/buttonEqu"
+            android:layout_span="2"
+            android:text="=" />
+
+        <Button
+            android:id="@+id/buttonCan"
+            android:text="C" />
+
+        <Button
+            android:id="@+id/buttonPow"
+            android:text="^" />
+    </TableRow>
+
+</TableLayout>

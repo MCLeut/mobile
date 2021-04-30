@@ -6,39 +6,39 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="16"
-8-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml
+8-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml
+9-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:5:5-20:19
+11-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:5:5-20:19
 12        android:allowBackup="true"
-12-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:6:9-35
+12-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.3.1] C:\Users\cleuthardt\.gradle\caches\transforms-2\files-2.1\b234a824af7fd98a5c54fc0522824a91\core-1.3.1\AndroidManifest.xml:24:18-86
+13-->[androidx.core:core:1.3.1] C:\Users\Christopher\.gradle\caches\transforms-2\files-2.1\b234a824af7fd98a5c54fc0522824a91\core-1.3.1\AndroidManifest.xml:24:18-86
 14        android:debuggable="true"
 15        android:label="@string/app_name"
-15-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:7:9-41
+15-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:7:9-41
 16        android:supportsRtl="true"
-16-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:8:9-35
+16-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:8:9-35
 17        android:testOnly="true"
 18        android:theme="@style/AppTheme.NoActionBar" >
-18-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:9:9-52
+18-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:9:9-52
 19        <activity
-19-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:11:9-19:20
+19-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:11:9-19:20
 20            android:name="com.gamecodeschool.helloworld.HelloWorldActivity"
-20-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:12:13-47
+20-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:12:13-47
 21            android:label="@string/app_name" >
-21-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:13:13-45
+21-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:13:13-45
 22            <intent-filter>
-22-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:14:13-18:29
+22-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:14:13-18:29
 23                <action android:name="android.intent.action.MAIN" />
-23-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:15:17-69
-23-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:15:25-66
+23-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:15:17-69
+23-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:15:25-66
 24
 25                <category android:name="android.intent.category.LAUNCHER" />
-25-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:17:17-77
-25-->C:\Users\cleuthardt\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:17:27-74
+25-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:17:17-77
+25-->C:\Users\Christopher\OneDrive\PFH\Entwicklung mobiler Systeme\mobile\hw2\app\src\main\AndroidManifest.xml:17:27-74
 26            </intent-filter>
 27        </activity>
 28    </application>
