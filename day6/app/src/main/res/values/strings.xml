@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">timezones</string>
+    <string name="returnButton">Return to list</string>
+</resources>
