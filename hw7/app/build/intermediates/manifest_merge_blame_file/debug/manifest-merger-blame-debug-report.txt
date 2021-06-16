@@ -1,0 +1,64 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.google.googleio"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml
+10
+11    <!-- Update package name! -->
+12    <application
+12-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:5:5-28:19
+13        android:allowBackup="true"
+13-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:6:9-35
+14        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+14-->[androidx.core:core:1.0.0] C:\Users\Christopher\.gradle\caches\transforms-2\files-2.1\4d1b770511eeda85124362ac17f7d33a\core-1.0.0\AndroidManifest.xml:22:18-86
+15        android:debuggable="true"
+16        android:icon="@mipmap/ic_launcher"
+16-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:7:9-43
+17        android:label="@string/app_name"
+17-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:8:9-41
+18        android:supportsRtl="true"
+18-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:9:9-35
+19        android:testOnly="true"
+20        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+20-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:10:9-67
+21        <activity android:name="com.gamecodeschool.simplephoto.MainActivity" >
+21-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:11:9-17:20
+21-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:11:19-47
+22            <intent-filter>
+22-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:12:13-16:29
+23                <action android:name="android.intent.action.MAIN" />
+23-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:13:17-69
+23-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:13:25-66
+24
+25                <category android:name="android.intent.category.LAUNCHER" />
+25-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:15:17-77
+25-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:15:27-74
+26            </intent-filter>
+27        </activity>
+28
+29        <provider
+29-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:18:9-26:20
+30            android:name="androidx.core.content.FileProvider"
+30-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:19:13-62
+31            android:authorities="com.gamecodeschool.simplephoto.fileprovider"
+31-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:20:13-78
+32            android:exported="false"
+32-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:21:13-37
+33            android:grantUriPermissions="true" >
+33-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:22:13-47
+34            <meta-data
+34-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:23:13-25:64
+35                android:name="android.support.FILE_PROVIDER_PATHS"
+35-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:24:17-67
+36                android:resource="@xml/file_paths" />
+36-->C:\Users\Christopher\Desktop\hw7_kamera_mini_app\ch22-simplephoto\app\src\main\AndroidManifest.xml:25:17-51
+37        </provider>
+38    </application>
+39
+40</manifest>
