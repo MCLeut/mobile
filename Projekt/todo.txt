@@ -1,0 +1,28 @@
+Meine Android-App -Tracktivity-
+
+Was ist der Zweck der App?
+- Menschen brauchen eine Motivation um Sport zu machen ´
+-> Häufig fällt es jedoch schwer, einzuschätzen, wieviel Sport man gemacht hat und ob man sich ausreichend bewegt hat -> Die Analyse der Verhaltensmuster der Nutzer ist essenziell
+
+Wie lauten konkrete Fragestellungen, die mithilfe der App gelöst werden sollen?
+- Wie viele Kilometer habe ich in einem bestimmten Zeitraum x (z.B. innerhalb eines Monats) zurückgelegt?
+-> Wann war ich wo?
+-> Ziel der Nutzer: Ich möchte unbedingt den nächsten Erfolg erreichen und über mich selbst hinauswachsen
+
+Wie wird kann die App umgesetzt werden bzw. Was wird benötigt?
+- Standortdaten / Laufdaten
+
+- Erfassung:
+-> Bewegungssensor + GPS-Sensor bzw. Google-Netzwerkaufenthaltsdaten
+
+-Verarbeitung:
+-> Auswertung lokal auf Android-Gerät
+-> (Ausgewertete) Daten an Server via REST schicken (Gedanken machen, wie Authentifizierung geschehen soll!)
+-> Lightweight Backend für Eintragen und auslesen aus Datenbank
+
+- Zusätzlicher Anreiz für Nutzer, die App zu verwenden -"Gameification"-
+- Erfassung:
+-> QR-Codes als Erfolgsmerkmale via Kamera scannen
+
+- Verarbeitung:
+-> Erfolge werden auch in der Datenbank gespeichert (ähnliches Backend)
