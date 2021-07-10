@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "756389884606",
+    "project_id": "tracktivity-c9447",
+    "storage_bucket": "tracktivity-c9447.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756389884606:android:a31b7b01ea70122cfb24ef",
+        "android_client_info": {
+          "package_name": "com.example.tracktivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756389884606-5lj6j26v5puon3ii0mjgur8m9ve238n0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcO8y_jg1XQ9GETOt-ssdOqEhx8YHg7cE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756389884606-5lj6j26v5puon3ii0mjgur8m9ve238n0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
