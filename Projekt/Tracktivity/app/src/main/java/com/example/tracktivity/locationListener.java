@@ -10,7 +10,7 @@ public class locationListener implements LocationListener {
 
     @Override
     public void onLocationChanged(Location loc) {
-        MainActivity.setTextViewText(
+        gpsActivity.setTextViewText(
                 "Location changed: Lat: " + loc.getLatitude() + " Lng: "
                         + loc.getLongitude());
 

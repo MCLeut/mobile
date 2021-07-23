@@ -26,9 +26,9 @@ public class googleSignInActivity extends Activity {
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
 
-    // [START declare_auth]
     private FirebaseAuth mAuth;
-    // [END declare_auth]
+
+    public static FirebaseUser fbUser;
 
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -41,7 +41,6 @@ public class googleSignInActivity extends Activity {
                 .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build();
-        Log.d(TAG, String.valueOf(getString(R.string.default_web_client_id)));
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         // [END config_signin]
@@ -116,6 +115,8 @@ public class googleSignInActivity extends Activity {
 
     private void updateUI(FirebaseUser user) {
         Log.d(TAG, "Login with Google successful!");
+
+        fbUser = user;
 
         Intent mainActivityIntent = new Intent(this, MainActivity.class);
         startActivity(mainActivityIntent);
