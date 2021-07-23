@@ -2,6 +2,7 @@ package com.example.tracktivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -60,6 +61,9 @@ public class checkPermissionsActivity extends AppCompatActivity {
             Snackbar.make(mLayout,
                     "The Permission for reading the phone state is available!",
                     Snackbar.LENGTH_SHORT).show();
+
+            Intent signInIntent = new Intent(this, googleSignInActivity.class);
+            startActivity(signInIntent);
         } else {
             // Permission is missing and must be requested.
             statusTV.setText(statusTV.getText() + "\nYou need the read phone state permission!");

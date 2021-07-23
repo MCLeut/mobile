@@ -22,14 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, googleSignInActivity.class);
-        startActivity(intent);
-
-
-        ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                1);
-
         tv = findViewById(R.id.textView1);
 
         LocationManager locationManager = (LocationManager)

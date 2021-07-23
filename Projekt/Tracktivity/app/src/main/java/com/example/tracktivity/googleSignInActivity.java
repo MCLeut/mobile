@@ -38,9 +38,10 @@ public class googleSignInActivity extends Activity {
         // [START config_signin]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build();
+        Log.d(TAG, String.valueOf(getString(R.string.default_web_client_id)));
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         // [END config_signin]
@@ -49,6 +50,8 @@ public class googleSignInActivity extends Activity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
+
+        signIn();
     }
 
     // [START on_start_check_user]
@@ -112,7 +115,10 @@ public class googleSignInActivity extends Activity {
     // [END signin]
 
     private void updateUI(FirebaseUser user) {
+        Log.d(TAG, "Login with Google successful!");
 
+        Intent mainActivityIntent = new Intent(this, MainActivity.class);
+        startActivity(mainActivityIntent);
     }
 
 }
