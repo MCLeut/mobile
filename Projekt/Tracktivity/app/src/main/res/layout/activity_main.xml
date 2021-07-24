@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/mainActivity_layout">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,5 +16,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/showLocationOnMapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Standort auf Karte Anzeigen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

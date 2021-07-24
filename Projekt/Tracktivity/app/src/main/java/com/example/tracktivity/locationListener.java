@@ -10,9 +10,12 @@ public class locationListener implements LocationListener {
 
     @Override
     public void onLocationChanged(Location loc) {
-        gpsActivity.setTextViewText(
+        /*gpsActivity.setTextViewText(
                 "Location changed: Lat: " + loc.getLatitude() + " Lng: "
                         + loc.getLongitude());
+        */
+
+        mapActivity.changeCurrentPosition(loc.getLatitude(), loc.getLongitude());
 
         /*------- To get city name from coordinates --------
         String cityName = null;
