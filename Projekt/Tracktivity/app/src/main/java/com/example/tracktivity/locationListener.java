@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 public class locationListener implements LocationListener {
 
+    MainActivity mainActivity;
+
     @Override
     public void onLocationChanged(Location loc) {
         /*gpsActivity.setTextViewText(
@@ -17,24 +19,11 @@ public class locationListener implements LocationListener {
 
         mapActivity.changeCurrentPosition(loc.getLatitude(), loc.getLongitude());
 
-        /*------- To get city name from coordinates --------
-        String cityName = null;
-        Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
-        List<Address> addresses;
-        try {
-            addresses = gcd.getFromLocation(loc.getLatitude(),
-                    loc.getLongitude(), 1);
-            if (addresses.size() > 0) {
-                System.out.println(addresses.get(0).getLocality());
-                cityName = addresses.get(0).getLocality();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        String s = longitude + "\n" + latitude + "\n\nMy Current City is: "
-                + cityName;
-        editLocation.setText(s);*/
+        mainActivity.fb.insertGPSData(
+                loc.getLatitude(), loc.getLongitude(), loc.getAltitude(), loc.getAccuracy(), loc.getSpeed()
+        );
+
+        mainActivity.fb.startLocationDataUpdate();
     }
 
     @Override

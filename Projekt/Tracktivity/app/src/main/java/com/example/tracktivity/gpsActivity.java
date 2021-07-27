@@ -34,7 +34,7 @@ public class gpsActivity extends AppCompatActivity {
                 return;
             }
             locationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
+                    LocationManager.GPS_PROVIDER, 500, (float) 0.4, locationListener);
 
 
         }

@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Hallo!"
         android:id="@+id/textView1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/showLocationOnMapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Standort auf Karte Anzeigen"
+        android:text="Aktuellen Standort und heute zurückgelegten Weg auf der Karte anzeigen."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />

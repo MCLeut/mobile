@@ -10,16 +10,22 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.List;
 
 public class mapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     static Marker currentLocationMarker;
+    static Polyline dailyPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +62,25 @@ public class mapActivity extends AppCompatActivity implements OnMapReadyCallback
         currentLocationMarker = googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(0,0))
                 .title("Ihre Position"));
+
+        dailyPath = googleMap.addPolyline(new PolylineOptions()
+                .clickable(true)
+                .add(new LatLng(0, 0))
+        );
+
+        //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-23.684, 133.903), 4));
+
     }
 
-    public static void changeCurrentPosition(double lat, double lng){
+    public static void updateDailyPath(List<LatLng> pathList){
+        dailyPath.setPoints(pathList);
+    }
+
+    public static void moveCamera(double lat, double lng){
+
+    }
+
+    public static void changeCurrentPosition(double lat, double lng){ 
         currentLocationMarker.setPosition(new LatLng(lat, lng));
     }
 

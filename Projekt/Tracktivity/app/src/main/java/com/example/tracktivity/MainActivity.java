@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tv;
 
-    firebase fb;
+    public static firebase fb;
 
     private View mLayout;
     private Button locationOnMapButton;
