@@ -68,16 +68,16 @@ public class mapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .add(new LatLng(0, 0))
         );
 
-        //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-23.684, 133.903), 4));
+        // over europe, temporary
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                new LatLng(54.5260, 15.2551), 4)
+        );
 
     }
 
     public static void updateDailyPath(List<LatLng> pathList){
+
         dailyPath.setPoints(pathList);
-    }
-
-    public static void moveCamera(double lat, double lng){
-
     }
 
     public static void changeCurrentPosition(double lat, double lng){ 

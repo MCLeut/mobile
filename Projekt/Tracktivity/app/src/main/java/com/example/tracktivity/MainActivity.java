@@ -1,16 +1,14 @@
 package com.example.tracktivity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.content.Context;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,15 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     public static firebase fb;
 
     private View mLayout;
-    private Button locationOnMapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +34,22 @@ public class MainActivity extends AppCompatActivity {
 
         mLayout = findViewById(R.id.mainActivity_layout);
 
-        locationOnMapButton = findViewById(R.id.showLocationOnMapButton);
+        Button locationOnMapButton = findViewById(R.id.showLocationOnMapButton);
 
         fb = new firebase(googleSignInActivity.fbUser);
 
         tv = findViewById(R.id.textView1);
         tv.setText("Willkommen, " + fb.getUserName());
 
-        locationOnMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mapActivityIntent = new Intent(getApplicationContext(), mapActivity.class);
-                startActivity(mapActivityIntent);
-            }
+        locationOnMapButton.setOnClickListener(v -> {
+            Intent mapActivityIntent = new Intent(getApplicationContext(), mapActivity.class);
+            startActivity(mapActivityIntent);
         });
+
+        Util.scheduleJob(getApplicationContext());
 
     }
 
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mainactivity_optionsmenu, menu);

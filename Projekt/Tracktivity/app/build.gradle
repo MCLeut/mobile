@@ -36,7 +36,8 @@ android {
 }
 
 dependencies {
-
+    // Work Manager - background tasks
+    implementation "androidx.work:work-runtime:2.5.0"
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:28.2.1')
     // Firebase Analytics

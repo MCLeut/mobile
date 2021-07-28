@@ -17,13 +17,13 @@ import com.google.android.material.snackbar.Snackbar;
 public class checkPermissionsActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_FINE_LOCATION = 1000;
+    private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1003;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE = 1002;
     private static final int PERMISSION_READ_PHONE_STATE = 1001;
 
     private View mLayout;
 
     private TextView statusTV;
-    private Button grantPermissionsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class checkPermissionsActivity extends AppCompatActivity {
         mLayout = findViewById(R.id.permission_activity_layout);
 
         statusTV = findViewById(R.id.checkPermissionsStatusTextView);
-        grantPermissionsButton = findViewById(R.id.grantPermissionsButton);
+        Button grantPermissionsButton = findViewById(R.id.grantPermissionsButton);
 
         grantPermissionsButton.setOnClickListener(v -> {
             requestFineLocationPermission();
@@ -84,6 +84,8 @@ public class checkPermissionsActivity extends AppCompatActivity {
         && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED
         && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED
+        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED){
             Intent signInActivityIntent = new Intent(this, googleSignInActivity.class);
             startActivity(signInActivityIntent);
@@ -97,6 +99,18 @@ public class checkPermissionsActivity extends AppCompatActivity {
 
         switch (requestCode) {
             case PERMISSION_REQUEST_FINE_LOCATION:
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Snackbar.make(mLayout, "Permission Granted!", Snackbar.LENGTH_SHORT).show();
+
+                    requestCoarseLocationPermission();
+                } else {
+                    Snackbar.make(mLayout, "Permission Denied! Restart the app to try again", Snackbar.LENGTH_SHORT).show();
+                }
+
+                checkPermissions();
+                break;
+            case PERMISSION_REQUEST_COARSE_LOCATION:
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Snackbar.make(mLayout, "Permission Granted!", Snackbar.LENGTH_SHORT).show();
@@ -153,6 +167,29 @@ public class checkPermissionsActivity extends AppCompatActivity {
                 // Request the permission. The result will be received in onRequestPermissionResult().
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_FINE_LOCATION);
+            }
+        }
+    }
+
+    private void requestCoarseLocationPermission() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            requestReadPhoneStatePermission();
+        }else {
+            // Permission has not been granted and must be requested.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                Snackbar.make(mLayout, "The Coarse Location Permission is needed for the app to function.",
+                        Snackbar.LENGTH_INDEFINITE).setAction("Okay!", view -> {
+                    // Request the permission
+                    ActivityCompat.requestPermissions(checkPermissionsActivity.this,
+                            new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
+                }).show();
+
+            } else {
+                // Request the permission. The result will be received in onRequestPermissionResult().
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
             }
         }
     }
