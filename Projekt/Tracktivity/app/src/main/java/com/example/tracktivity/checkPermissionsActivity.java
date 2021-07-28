@@ -1,7 +1,6 @@
 package com.example.tracktivity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -13,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import org.jetbrains.annotations.NotNull;
 
 public class checkPermissionsActivity extends AppCompatActivity {
 
@@ -35,14 +36,12 @@ public class checkPermissionsActivity extends AppCompatActivity {
         statusTV = findViewById(R.id.checkPermissionsStatusTextView);
         Button grantPermissionsButton = findViewById(R.id.grantPermissionsButton);
 
-        grantPermissionsButton.setOnClickListener(v -> {
-            requestFineLocationPermission();
-        });
+        grantPermissionsButton.setOnClickListener(v -> requestFineLocationPermission());
 
         checkPermissions();
     }
 
-    private void checkPermissions(){
+    private void checkPermissions() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             // Permission is already available, inform user
@@ -79,14 +78,14 @@ public class checkPermissionsActivity extends AppCompatActivity {
             statusTV.setText(statusTV.getText() + "\nYou need the read phone state permission!");
         }
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
                 == PackageManager.PERMISSION_GRANTED
-        && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED
-        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED
-        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED){
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
             Intent signInActivityIntent = new Intent(this, googleSignInActivity.class);
             startActivity(signInActivityIntent);
         }
@@ -94,7 +93,7 @@ public class checkPermissionsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String @NotNull [] permissions, int @NotNull [] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
@@ -152,7 +151,7 @@ public class checkPermissionsActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             requestReadPhoneStatePermission();
-        }else {
+        } else {
             // Permission has not been granted and must be requested.
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -175,7 +174,7 @@ public class checkPermissionsActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             requestReadPhoneStatePermission();
-        }else {
+        } else {
             // Permission has not been granted and must be requested.
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_COARSE_LOCATION)) {

@@ -18,35 +18,34 @@ import java.util.Locale;
 
 public class firebase {
 
+    private static final String TAG = "firebase";
     FirebaseDatabase database;
     FirebaseUser user;
 
-    private static final String TAG = "firebase";
-
-    public firebase(FirebaseUser user){
+    public firebase(FirebaseUser user) {
         this.user = user;
 
         this.database = FirebaseDatabase.getInstance();
     }
 
-    public firebase(){
+    public firebase() {
         this.user = null;
 
         this.database = FirebaseDatabase.getInstance();
     }
 
-    String getUserName(){
+    String getUserName() {
         if (user != null) {
             return user.getDisplayName();
         }
         return "No user data provided.";
     }
 
-    void insertGPSData(double lat, double lng, double alt,  float acc, float speed){
+    void insertGPSData(double lat, double lng, double alt, float acc, float speed) {
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         String time = new SimpleDateFormat("HH:mm:ss:SSS", Locale.getDefault()).format(new Date());
 
-        String path = "/locationData/"+date+"/";
+        String path = "/locationData/" + date + "/";
 
         DatabaseReference myRef = database.getReference(path);
         myRef.child(time).child("lat").setValue(lat);
@@ -61,11 +60,11 @@ public class firebase {
 
     }
 
-    void insertGPSData(Location loc){
+    void insertGPSData(Location loc) {
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         String time = new SimpleDateFormat("HH:mm:ss:SSS", Locale.getDefault()).format(new Date());
 
-        String path = "/locationData/"+date+"/";
+        String path = "/locationData/" + date + "/";
 
         DatabaseReference myRef = database.getReference(path);
         myRef.child(time).child("lat").setValue(loc.getLatitude());
@@ -78,9 +77,9 @@ public class firebase {
 
     }
 
-    void startLocationDataUpdate(String date){
-        database.getReference("/locationData/"+date+"/").get().addOnSuccessListener(ds -> {
-            if (ds != null){
+    void startLocationDataUpdate(String date) {
+        database.getReference("/locationData/" + date + "/").get().addOnSuccessListener(ds -> {
+            if (ds != null) {
                 List<LatLng> pathList = new ArrayList<>();
                 for (DataSnapshot child : ds.getChildren()) {
                     LatLng point = new LatLng(
@@ -93,42 +92,42 @@ public class firebase {
                     mapActivity.updateDailyPath(pathList);
 
                     // display startpoint of the day
-                    if (mapActivity.date != null){
+                    if (mapActivity.date != null) {
                         mapActivity.changeLocationMarker1Position(
                                 pathList.get(0).latitude,
                                 pathList.get(0).longitude
                         );
                         mapActivity.changeLocationMarker2Position(
-                                pathList.get(pathList.size()-1).latitude,
-                                pathList.get(pathList.size()-1).longitude
+                                pathList.get(pathList.size() - 1).latitude,
+                                pathList.get(pathList.size() - 1).longitude
                         );
                     }
-                }else{
+                } else {
                     Log.d(TAG, "couldn't find path data");
                 }
             }
         });
     }
 
-    void startLocationDataUpdate(){
-        if(mapActivity.date == null) {
+    void startLocationDataUpdate() {
+        if (mapActivity.date == null) {
             String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
             startLocationDataUpdate(date);
-        }else{
+        } else {
             startLocationDataUpdate(mapActivity.date);
         }
     }
 
-    void updateDateSpinner(){
+    void updateDateSpinner() {
         database.getReference("/locationData/").get().addOnSuccessListener(ds -> {
-            if (ds != null){
+            if (ds != null) {
                 List<String> dateList = new ArrayList<>();
                 for (DataSnapshot child : ds.getChildren()) {
                     dateList.add(child.getKey());
                 }
                 if (dateList.toArray().length > 1) {
                     MainActivity.packDateSpinner(dateList);
-                }else{
+                } else {
                     Log.d(TAG, "couldn't find dates");
                 }
             }
@@ -136,7 +135,7 @@ public class firebase {
     }
 
 
-    void logout(){
+    void logout() {
         FirebaseAuth.getInstance().signOut();
     }
 

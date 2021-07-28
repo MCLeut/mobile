@@ -21,12 +21,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static firebase fb;
-
-    private View mLayout;
-    TextView tv;
     static ArrayAdapter<String> adapter;
-
+    TextView tv;
     String selectedDate = "";
+    private View mLayout;
+
+    public static void packDateSpinner(List<String> dateList) {
+        for (String date : dateList) {
+            adapter.add(date);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.button2).setOnClickListener(v -> {
-            if (selectedDate != "") {
+            if (!selectedDate.equals("")) {
                 Intent mapActivityIntent = new Intent(getApplicationContext(), mapActivity.class);
                 mapActivity.date = selectedDate;
                 startActivity(mapActivityIntent);
-            }else {
+            } else {
                 Snackbar.make(mLayout,
                         "Bitte ein Datum auswählen!",
                         Snackbar.LENGTH_SHORT).show();
@@ -85,12 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         Util.scheduleJob(this);
 
-    }
-
-    public static void packDateSpinner(List<String> dateList){
-        for(String date : dateList){
-            adapter.add(date);
-        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,9 +103,9 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.logout) {
             Snackbar.make(mLayout, "Wollen Sie sich wirklich abmelden?",
                     Snackbar.LENGTH_LONG).setAction("Ja!", view -> {
-                        fb.logout();
-                        Intent signInIntent = new Intent(this, googleSignInActivity.class);
-                        startActivity(signInIntent);
+                fb.logout();
+                Intent signInIntent = new Intent(this, googleSignInActivity.class);
+                startActivity(signInIntent);
             }).show();
 
             return true;

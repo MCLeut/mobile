@@ -3,13 +3,9 @@ package com.example.tracktivity;
 import android.annotation.SuppressLint;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
-import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 
 
@@ -17,7 +13,9 @@ import android.util.Log;
 public class gpsDataJob extends JobService {
 
     private static final String TAG = "gpsJobService";
-
+    private final LocationListener mLocationListener = location -> {
+        // nothing
+    };
     firebase fb = new firebase();
 
     @Override
@@ -42,23 +40,23 @@ public class gpsDataJob extends JobService {
         LocationManager mLocationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
 
         // getting GPS & network location status
-        boolean isGPSEnabled = mLocationManager.isProviderEnabled(mLocationManager.GPS_PROVIDER);
-        boolean isNetworkEnabled = mLocationManager.isProviderEnabled(mLocationManager.NETWORK_PROVIDER);
+        boolean isGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        boolean isNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         if (!isGPSEnabled && !isNetworkEnabled) {
             // no network provider is enabled
             Log.d(TAG, "no network provided");
         } else {
             if (isGPSEnabled) {
-                mLocationManager.requestLocationUpdates(mLocationManager.GPS_PROVIDER, (long) 1000, (float) 1, mLocationListener);
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, (long) 1000, (float) 1, mLocationListener);
                 Log.d(TAG, "GPS Enabled");
                 // no null check needed
-                location = mLocationManager.getLastKnownLocation(mLocationManager.GPS_PROVIDER);
-            }else if (isNetworkEnabled) {
-                mLocationManager.requestLocationUpdates(mLocationManager.NETWORK_PROVIDER, (long) 1000, (float) 0, mLocationListener);
+                location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            } else if (isNetworkEnabled) {
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, (long) 1000, (float) 0, mLocationListener);
                 Log.d(TAG, "Network");
                 // no null check needed
-                location = mLocationManager.getLastKnownLocation(mLocationManager.NETWORK_PROVIDER);
+                location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             }
             //get the location by gps
 
@@ -66,8 +64,4 @@ public class gpsDataJob extends JobService {
 
         return location;
     }
-
-    private final LocationListener mLocationListener = location -> {
-        // nothing
-    };
 }
