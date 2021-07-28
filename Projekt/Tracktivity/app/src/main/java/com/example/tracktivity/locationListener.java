@@ -10,7 +10,7 @@ public class locationListener implements LocationListener {
     @Override
     public void onLocationChanged(Location loc) {
 
-        mapActivity.changeCurrentPosition(loc.getLatitude(), loc.getLongitude());
+        mapActivity.changeLocationMarker1Position(loc.getLatitude(), loc.getLongitude());
 
         /* not used, replaced by gps job service
         fb.insertGPSData(

@@ -1,53 +1,96 @@
 package com.example.tracktivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    TextView tv;
+public class MainActivity extends AppCompatActivity {
 
     public static firebase fb;
 
     private View mLayout;
+    TextView tv;
+    static ArrayAdapter<String> adapter;
+
+    String selectedDate = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mLayout = findViewById(R.id.mainActivity_layout);
-
-        Button locationOnMapButton = findViewById(R.id.showLocationOnMapButton);
-
         fb = new firebase(googleSignInActivity.fbUser);
 
-        tv = findViewById(R.id.textView1);
-        tv.setText("Willkommen, " + fb.getUserName());
 
-        locationOnMapButton.setOnClickListener(v -> {
+        mLayout = findViewById(R.id.mainActivity_layout);
+
+        tv = findViewById(R.id.textView1);
+        tv.setText("Willkommen, " + fb.getUserName() + "!");
+
+
+        Spinner sItems = findViewById(R.id.selectDateSpinner);
+
+        List<String> spinnerArray = new ArrayList<>();
+        adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        sItems.setAdapter(adapter);
+        sItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedDate = adapter.getItem(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                selectedDate = "";
+            }
+        });
+
+        fb.updateDateSpinner();
+
+        findViewById(R.id.showLocationOnMapButton).setOnClickListener(v -> {
             Intent mapActivityIntent = new Intent(getApplicationContext(), mapActivity.class);
+            mapActivity.date = null;
             startActivity(mapActivityIntent);
         });
 
-        Util.scheduleJob(getApplicationContext());
+        findViewById(R.id.button2).setOnClickListener(v -> {
+            if (selectedDate != "") {
+                Intent mapActivityIntent = new Intent(getApplicationContext(), mapActivity.class);
+                mapActivity.date = selectedDate;
+                startActivity(mapActivityIntent);
+            }else {
+                Snackbar.make(mLayout,
+                        "Bitte ein Datum auswählen!",
+                        Snackbar.LENGTH_SHORT).show();
+            }
+        });
 
+        Util.scheduleJob(this);
+
+    }
+
+    public static void packDateSpinner(List<String> dateList){
+        for(String date : dateList){
+            adapter.add(date);
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

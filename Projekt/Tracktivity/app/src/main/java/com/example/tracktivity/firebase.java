@@ -4,23 +4,17 @@ import android.location.Location;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class firebase {
 
@@ -97,6 +91,18 @@ public class firebase {
                 }
                 if (pathList.toArray().length > 1) {
                     mapActivity.updateDailyPath(pathList);
+
+                    // display startpoint of the day
+                    if (mapActivity.date != null){
+                        mapActivity.changeLocationMarker1Position(
+                                pathList.get(0).latitude,
+                                pathList.get(0).longitude
+                        );
+                        mapActivity.changeLocationMarker2Position(
+                                pathList.get(pathList.size()-1).latitude,
+                                pathList.get(pathList.size()-1).longitude
+                        );
+                    }
                 }else{
                     Log.d(TAG, "couldn't find path data");
                 }
@@ -105,10 +111,29 @@ public class firebase {
     }
 
     void startLocationDataUpdate(){
-        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        startLocationDataUpdate(date);
+        if(mapActivity.date == null) {
+            String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+            startLocationDataUpdate(date);
+        }else{
+            startLocationDataUpdate(mapActivity.date);
+        }
     }
 
+    void updateDateSpinner(){
+        database.getReference("/locationData/").get().addOnSuccessListener(ds -> {
+            if (ds != null){
+                List<String> dateList = new ArrayList<>();
+                for (DataSnapshot child : ds.getChildren()) {
+                    dateList.add(child.getKey());
+                }
+                if (dateList.toArray().length > 1) {
+                    MainActivity.packDateSpinner(dateList);
+                }else{
+                    Log.d(TAG, "couldn't find dates");
+                }
+            }
+        });
+    }
 
 
     void logout(){
